@@ -6,7 +6,6 @@ const Header = () => {
         <nav className='navbar'>
             <div className="container-fluid">
                 <NavLink to={"/"}>Hompage</NavLink>
-                <NavLink to={"/id"}>Details</NavLink>
             </div>
         </nav>
     )
