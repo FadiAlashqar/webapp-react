@@ -1,0 +1,84 @@
+import React from 'react'
+import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+
+const initialFilms = [
+    {
+        id: 1,
+        title: "Titolo 1",
+        author: "Regista 1",
+        abstract: "Lorem ipsum",
+        image: "https://picsum.photos/500/300"
+    },
+    {
+        id: 2,
+        title: "Titolo 2",
+        author: "Regista 2",
+        abstract: "Lorem ipsum",
+        image: "https://picsum.photos/500/300"
+    },
+    {
+        id: 3,
+        title: "Titolo 3",
+        author: "Regista 3",
+        abstract: "Lorem ipsum",
+        image: "https://picsum.photos/500/300"
+    },
+    {
+        id: 4,
+        title: "Titolo 4",
+        author: "Regista 4",
+        abstract: "Lorem ipsum",
+        image: "https://picsum.photos/500/300"
+    },
+    {
+        id: 5,
+        title: "Titolo 5",
+        author: "Regista 5",
+        abstract: "Lorem ipsum",
+        image: "https://picsum.photos/500/300"
+    },
+    {
+        id: 6,
+        title: "Titolo 6",
+        author: "Regista 6",
+        abstract: "Lorem ipsum",
+        image: "https://picsum.photos/500/300"
+    }
+
+];
+
+const Homepage = () => {
+    const [films, setFilms] = useState(initialFilms);
+
+    return (
+        <div className="container">
+            <div className="row">
+                <div className="col-12">
+                    <h1>Films</h1>
+                </div>
+            </div>
+            <div className="row gy-4">
+                {films.map((film) => {
+                    return <div className="col-12 col-md-6 col-lg-4">
+                        <div className="card">
+                            <div className="card-image-top">
+                                <img className='img-fluid' src={film.image} alt="" />
+                            </div>
+                            <div className="card-body">
+                                <div className="card-text">
+                                    <h3>{film.title}</h3>
+                                    <h4><em>{film.author}</em></h4>
+                                    <p>{film.abstract}</p>
+                                    <NavLink to={`/${film.id}`}> <button type="button" className="btn btn-primary">Read More</button></NavLink>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                })}
+            </div>
+        </div>
+    )
+}
+
+export default Homepage
