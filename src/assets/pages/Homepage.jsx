@@ -2,55 +2,23 @@ import React from 'react'
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import FilmCard from '../../components/FilmCard';
-
-const initialFilms = [
-    {
-        id: 1,
-        title: "Titolo 1",
-        author: "Regista 1",
-        abstract: "Lorem ipsum",
-        image: "https://picsum.photos/500/300"
-    },
-    {
-        id: 2,
-        title: "Titolo 2",
-        author: "Regista 2",
-        abstract: "Lorem ipsum",
-        image: "https://picsum.photos/500/300"
-    },
-    {
-        id: 3,
-        title: "Titolo 3",
-        author: "Regista 3",
-        abstract: "Lorem ipsum",
-        image: "https://picsum.photos/500/300"
-    },
-    {
-        id: 4,
-        title: "Titolo 4",
-        author: "Regista 4",
-        abstract: "Lorem ipsum",
-        image: "https://picsum.photos/500/300"
-    },
-    {
-        id: 5,
-        title: "Titolo 5",
-        author: "Regista 5",
-        abstract: "Lorem ipsum",
-        image: "https://picsum.photos/500/300"
-    },
-    {
-        id: 6,
-        title: "Titolo 6",
-        author: "Regista 6",
-        abstract: "Lorem ipsum",
-        image: "https://picsum.photos/500/300"
-    }
-
-];
+import axios from 'axios';
+import { useEffect } from 'react';
 
 const Homepage = () => {
-    const [films, setFilms] = useState(initialFilms);
+    const [films, setFilms] = useState([]);
+
+    const getFilms = () => {
+        axios.get("http://127.0.0.1:3000/api/movie").then((resp) => {
+            setFilms(resp.data);
+        })
+    }
+
+    useEffect(() => {
+        getFilms();
+    }, [])
+
+    console.log(films)
 
     return (
         <div className="container">
