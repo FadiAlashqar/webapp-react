@@ -2,6 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import ReviewForm from '../../components/ReviewForm';
 
 
 
@@ -48,6 +49,11 @@ const Details = () => {
                         </div>
                     </div>
                 })}
+            </div>
+            <div className="row mt-4">
+                <div className="col-12">
+                    <ReviewForm filmId={id} reloadReview={getFilms} />
+                </div>
             </div>
         </div>
     )
